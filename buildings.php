@@ -1,30 +1,3 @@
-<!doctype html>
-<?php include("nav.php");?>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Courses</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Buildings</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>buildingid</th>
-      <th>name</th>
-      <th>subject</th>
-      <th>college</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-$servername = "localhost";
-$username = "landryou_user";
-$password = "A2kYbmhiMHTE";
-$dbname = "landryou_homework3data";
 
 <!doctype html>
 <html lang="en">
