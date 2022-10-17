@@ -89,7 +89,7 @@ if ($result->num_rows > 0) {
                       <form method="post" action="">
                         <div class="mb-3">
                           <label for="editBuilding<?=$row["buildingid"]?>name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editBuilding<?=$row["buildingid"]?>Name" aria-describedby="editBuilding<?=$row["buildingid"]?>Help" name="bName" value="<?=$row['buildingid']?>">
+                          <input type="text" class="form-control" id="editBuilding<?=$row["buildingid"]?>Name" aria-describedby="editBuilding<?=$row["buildingid"]?>Help" name="bName" value="<?=$row['name']?>">
                           <div id="editBuilding<?=$row["buildingid"]?>Help" class="form-text">Enter the building name.</div>
                         </div>
                         <input type="hidden" name="bid" value="<?=$row['buildingid']?>">
@@ -103,7 +103,7 @@ if ($result->num_rows > 0) {
             </td>
             <td>
               <form method="post" action="">
-                <input type="hidden" name="iid" value="<?=$row["instructor_id"]?>" />
+                <input type="hidden" name="bid" value="<?=$row["buildingid"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
