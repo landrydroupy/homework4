@@ -72,9 +72,10 @@ if ($result->num_rows > 0) {
 ?>
           
           <tr>
-            <td><?=$row["buildingid"]?></td>
+           <td><?=$row["buildingid"]?></td>
+            <td><?=$row["name"]?></td>
             <td>
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editBuilding<?=$row["name"]?>">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editBuilding<?=$row["buildingid"]?>">
                 Edit
               </button>
               <div class="modal fade" id="editBuilding<?=$row["buildingid"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editBuilding<?=$row["buildingid"]?>Label" aria-hidden="true">
