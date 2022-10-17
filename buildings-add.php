@@ -7,12 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Add Instructor</h1>
+    <h1>Add Building</h1>
 <form method="post" action="buildings-add-save.php">
   <div class="mb-3">
-    <label for="instructorName" class="form-label">Name</label>
-    <input type="text" class="form-control" id="instructorName" aria-describedby="nameHelp" name="iName">
-    <div id="nameHelp" class="form-text">Enter the instructor's name.</div>
+    <label for="buildingName" class="form-label">Name</label>
+    <input type="text" class="form-control" id="buildingName" aria-describedby="nameHelp" name="bName">
+    <div id="nameHelp" class="form-text">Enter the building's name.</div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
