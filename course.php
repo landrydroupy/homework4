@@ -143,15 +143,12 @@ $conn->close();
                   <label for="coursePrefix" class="form-label">Prefix</label>
                   <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
                   <div id="nameHelp" class="form-text">Enter the course prefix.</div>
-		  <label for="coursePrefix" class="form-label">Prefix</label>
-                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
+		  <label for="courseNumber" class="form-label">Number</label>
+                  <input type="text" class="form-control" id="courseNumber" aria-describedby="nameHelp" name="cNumber">
                   <div id="nameHelp" class="form-text">Enter the course prefix.</div>
-		  <label for="coursePrefix" class="form-label">Prefix</label>
-                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
-                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
-		  <label for="coursePrefix" class="form-label">Prefix</label>
-                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
-                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
+		  <label for="courseDescription" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="courseDescription" aria-describedby="nameHelp" name="cDescription">
+                  <div id="nameHelp" class="form-text">Enter the course description.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
