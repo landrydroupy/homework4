@@ -1,79 +1,82 @@
 <!doctype html>
-	<?php include("nav.php");?>
-	<html lang="en">
-	  <head>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <title>Courses</title>
-	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-	  </head>
-	 
-	   
-	  
-	$servername = "localhost";
-	$username = "landryou_user";
-	$password = "A2kYbmhiMHTE";
-	$dbname = "landryou_homework3data";
-	
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buildings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      
+<?php
+$servername = "localhost";
+$username = "landryou_user";
+$password = "A2kYbmhiMHTE";
+$dbname = "landryou_homework3data";
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-	  die("Connection failed: " . $conn->connect_error);
-	}
-	
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into course (description) value (?)";
+      $sqlAdd = "insert into buildings (name) value (?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("s", $_POST['cDescription]);
+      $stmtAdd->bind_param("s", $_POST['bName']);
       $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New Course added.</div>';
+      echo '<div class="alert alert-success" role="alert">New Building added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update course set description=? where courseid=?";
+      $sqlEdit = "update buildings set name=? where buildingid=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("si", $_POST['cDescription'], $_POST['cid']);
+      $stmtEdit->bind_param("si", $_POST['bName'], $_POST['bid']);
       $stmtEdit->execute();
-      echo '<div class="alert alert-success" role="alert">Course edited.</div>';
+      echo '<div class="alert alert-success" role="alert">Building edited.</div>';
+      break;
     case 'Delete':
-      $sqlDelete = "delete from course where courseid=?";
+      $sqlDelete = "delete from buildings where buildingid=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['cid']);
+      $stmtDelete->bind_param("i", $_POST['bid']);
       $stmtDelete->execute();
-      echo '<div class="alert alert-success" role="alert">Course deleted.</div>';
+      echo '<div class="alert alert-success" role="alert">Building deleted.</div>';
+      break;
   }
 }
-
 ?>
- <h1>Courses</h1>
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th>ID</th>
-	      <th>Prefix</th>
-	      <th>Number</th>
-	      <th>Description</th>
-	      <th></th>
-	      <th></th>
-	    </tr>
-	  </thead>
-	  <tbody>
-		
+    
+      <h1>Courses</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>CourseID</th>
+            <th>Prefix</th>
+           <th>Number</th>
+            <th>Description</th>
+            <th></th>
+	    <th></th>
+	    <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          
 <?php
 $sql = "SELECT courseid,prefix,number,description from course";
-$result = $conn->query($sql);		  
-		  
-	if ($result->num_rows > 0) {
-	  // output data of each row
-	  while($row = $result->fetch_assoc()) {
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
 ?>
           
           <tr>
-            <td><?=$row["courseid"]?></td>
-            <td><a href="instructor-section.php?id=<?=$row["instructor_id"]?>"><?=$row["instructor_name"]?></a></td>
+           <td><?=$row["courseid"]?></td>
+            <td><?=$row["prefix"]?></td>
+	     <td><?=$row["number"]?></td>
+	      <td><?=$row["description"]?></td>
             <td>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editCourse<?=$row["courseid"]?>">
                 Edit
@@ -88,13 +91,13 @@ $result = $conn->query($sql);
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editCourse<?=$row["courseid"]?>Name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Name" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cDescription" value="<?=$row['courseid']?>">
-                          <div id="editCourse<?=$row["courseid"]?>Help" class="form-text">Enter the course's name.</div>
+                          <label for="editCourse<?=$row["courseid"]?>name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Name" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cPrefix" value="<?=$row['prefix']?>">
+                          <div id="editCourse<?=$row["courseid"]?>Help" class="form-text">Enter the course prefix.</div>
                         </div>
                         <input type="hidden" name="cid" value="<?=$row['courseid']?>">
                         <input type="hidden" name="saveType" value="Edit">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
                     </div>
                   </div>
@@ -105,18 +108,18 @@ $result = $conn->query($sql);
               <form method="post" action="">
                 <input type="hidden" name="cid" value="<?=$row["courseid"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
-                <button type="submit" class="btn" onclick="return confirm('Are you sure?')">Delete</button>
+                <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
             </td>
           </tr>
           
 <?php
-	  }
-	} else {
-	  echo "0 results";
-	}
-	$conn->close();
-	?>
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
+?>
           
         </tbody>
       </table>
@@ -127,7 +130,7 @@ $result = $conn->query($sql);
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="addCourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addInstructorLabel" aria-hidden="true">
+      <div class="modal fade" id="addCourse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addCourseLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -137,9 +140,9 @@ $result = $conn->query($sql);
             <div class="modal-body">
               <form method="post" action="">
                 <div class="mb-3">
-                  <label for="courseDescription" class="form-label">Description</label>
-                  <input type="text" class="form-control" id="courseDescription" aria-describedby="descHelp" name="cDescription">
-                  <div id="descHelp" class="form-text">Enter the Course's description.</div>
+                  <label for="coursePrefix" class="form-label">Prefix</label>
+                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
+                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
