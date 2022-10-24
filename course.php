@@ -143,6 +143,15 @@ $conn->close();
                   <label for="coursePrefix" class="form-label">Prefix</label>
                   <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
                   <div id="nameHelp" class="form-text">Enter the course prefix.</div>
+		  <label for="coursePrefix" class="form-label">Prefix</label>
+                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
+                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
+		  <label for="coursePrefix" class="form-label">Prefix</label>
+                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
+                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
+		  <label for="coursePrefix" class="form-label">Prefix</label>
+                  <input type="text" class="form-control" id="coursePrefix" aria-describedby="nameHelp" name="cPrefix">
+                  <div id="nameHelp" class="form-text">Enter the course prefix.</div>
                 </div>
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
