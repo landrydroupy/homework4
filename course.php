@@ -91,10 +91,19 @@ if ($result->num_rows > 0) {
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editCourse<?=$row["courseid"]?>name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Name" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cPrefix" value="<?=$row['prefix']?>">
+                          <label for="editCourse<?=$row["courseid"]?>name" class="form-label">Prefix</label>
+                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Prefix" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cPrefix" value="<?=$row['prefix']?>">
                           <div id="editCourse<?=$row["courseid"]?>Help" class="form-text">Enter the course prefix.</div>
-                        </div>
+                          <label for="editCourse<?=$row["courseid"]?>name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Number" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cNumber" value="<?=$row['number']?>">
+                          <div id="editCourse<?=$row["courseid"]?>Help" class="form-text">Enter the course Number.</div>
+                         <label for="editCourse<?=$row["courseid"]?>name" class="form-label">Number</label>
+                          <input type="text" class="form-control" id="editCourse<?=$row["courseid"]?>Description" aria-describedby="editCourse<?=$row["courseid"]?>Help" name="cDescription" value="<?=$row['description']?>">
+                          <div id="editCourse<?=$row["courseid"]?>Help" class="form-text">Enter the course description.</div>
+                       
+			
+			
+			</div>
                         <input type="hidden" name="cid" value="<?=$row['courseid']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
