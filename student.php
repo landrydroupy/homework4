@@ -31,16 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<div class="alert alert-success" role="alert">New Course added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update course set prefix=?,number=?,description=? where courseid=?";
+      $sqlEdit = "update student set courseid=?,fname=?,lname=?,grade=? where studentid=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("sisi",  $_POST['cPrefix'],$_POST['cNumber'],$_POST['cDescription'], $_POST['cid']);
+      $stmtEdit->bind_param("issii", $_POST['sCourseID'],$_POST['cFname'],$_POST['cLname'],$_POST['sGrade'], $_POST['sid']);
       $stmtEdit->execute();
-      echo '<div class="alert alert-success" role="alert">Course edited.</div>';
+      echo '<div class="alert alert-success" role="alert">Student edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from course where courseid=?";
+      $sqlDelete = "delete from student where studentid=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['cid']);
+      $stmtDelete->bind_param("i", $_POST['sid']);
       $stmtDelete->execute();
       echo '<div class="alert alert-success" role="alert">Course deleted.</div>';
       break;
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
     
-      <h1>Courses</h1>
+      <h1>Students</h1>
       <table class="table table-striped">
         <thead>
           <tr>
