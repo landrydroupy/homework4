@@ -33,34 +33,18 @@ if ($result->num_rows > 0) {
 ?>
 <form method="post" action="student-edit-save.php">
   <div class="mb-3">
-   <label for="editStudent<?=$row["studentid"]?>name" class="form-label">First Name</label>
-   <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>fname" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sFname" value="<?=$row['fname']?>">
-   <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's First Name.</div>
-   <label for="editStudent<?=$row["studentid"]?>name" class="form-label">Last Name</label>
-   <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>lname" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sLname" value="<?=$row['lname']?>">
-   <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's Last Name.</div>
-   <label for="editStudent<?=$row["studentid"]?>name" class="form-label">Grade</label>
-   <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>grade" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sGrade" value="<?=$row['grade']?>">
-   <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's grade.</div>
-  </div>
-  <div class="mb-3">
-  <label for="courseIDList" class="form-label">CourseID</label>
-<select class="form-select" aria-label="Select CourseID" id="courseIDList" name="sCourseID">
-<?php
-    $CourseSql = "select courseid from course order by courseid";
-    $CourseResult = $conn->query($CourseSql);
-    while($CourseRow = $CourseResult->fetch_assoc()) {
-      if ($instructorRow['courseid'] == $row['courseid']) {
-        $selText = " selected";
-      } else {
-        $selText = "";
-      }
-?>
-  <option value="<?=$CourseRow['courseid']?>"<?=$selText?>><?=$instructorRow['courseid']?></option>
-<?php
-    }
-?>
-</select>
+    label for="editStudent<?=$row["studentid"]?>name" class="form-label">CourseID</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>courseid" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sCourseID" value="<?=$row['courseid']?>">
+                          <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's CourseID.</div>
+                         <label for="editStudent<?=$row["studentid"]?>name" class="form-label">First Name</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>fname" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sFname" value="<?=$row['fname']?>">
+                          <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's First Name.</div>
+                          <label for="editStudent<?=$row["studentid"]?>name" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>lname" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sLname" value="<?=$row['lname']?>">
+                          <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's Last Name.</div>
+                           <label for="editStudent<?=$row["studentid"]?>name" class="form-label">Grade</label>
+                          <input type="text" class="form-control" id="editStudent<?=$row["studentid"]?>grade" aria-describedby="editStudent<?=$row["studentid"]?>Help" name="sGrade" value="<?=$row['grade']?>">
+                          <div id="editStudent<?=$row["studentid"]?>Help" class="form-text">Enter the Student's grade.</div>
   </div>
   <input type="hidden" name="sid" value="<?=$row['studentid']?>">
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -76,3 +60,4 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>
+
