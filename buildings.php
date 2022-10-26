@@ -1,5 +1,6 @@
 
 <!doctype html>
+<?php include("nav.php");?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
