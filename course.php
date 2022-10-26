@@ -24,11 +24,11 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into buildings (name) value (?)";
+      $sqlAdd = "insert into course (prefix,number,description) value (?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("s", $_POST['bName']);
+      $stmtAdd->bind_param("s", $_POST['cPrefix'],$_POST['cNumber'],$_POST['cDescription']);
       $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New Building added.</div>';
+      echo '<div class="alert alert-success" role="alert">New Course added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update buildings set name=? where buildingid=?";
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     case 'Delete':
       $sqlDelete = "delete from buildings where buildingid=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['bid']);
+      $stmtDelete->bind_param("i", $_POST['cid']);
       $stmtDelete->execute();
       echo '<div class="alert alert-success" role="alert">Building deleted.</div>';
       break;
