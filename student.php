@@ -164,7 +164,7 @@ $conn->close();
                   <input type="text" class="form-control" id="studentLname" aria-describedby="nameHelp" name="sLname">
                   <div id="nameHelp" class="form-text">Enter the student's Last Name.</div>
                   <label for="studentGrade" class="form-label">Grade</label>
-                  <input type="text" class="form-control" id="studentCourseID" aria-describedby="nameHelp" name="sGrade">
+                  <input type="text" class="form-control" id="studentGrade" aria-describedby="nameHelp" name="sGrade">
                   <div id="nameHelp" class="form-text">Enter the student's Grade.</div>
 		  
                 </div>
