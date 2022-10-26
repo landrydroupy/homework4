@@ -26,7 +26,7 @@ $cDescription= $_POST['cDescription'];
 $sql = "insert into course (prefix,number,description) value (?,?,?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $cPrefix,$cNumber,$cDescription);
+    $stmt->bind_param("sis", $cPrefix,$cNumber,$cDescription);
     $stmt->execute();
 ?>
     
