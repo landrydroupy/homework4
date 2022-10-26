@@ -33,9 +33,9 @@ $sql = "update student set courseid=?,fname=?,lname=?,grade=? where studentid=?"
     $stmt->execute();
 ?>
     
-    <h1>Edit Course</h1>
+    <h1>Edit Student</h1>
 <div class="alert alert-success" role="alert">
-  Course edited.
+  Student edited.
 </div>
     <a href="course.php" class="btn btn-primary">Go back</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
