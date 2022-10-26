@@ -31,18 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo '<div class="alert alert-success" role="alert">New Course added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update buildings set name=? where buildingid=?";
+      $sqlEdit = "update buildings set prefix=?,number=?,description=? where courseid=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("si", $_POST['bName'], $_POST['bid']);
+      $stmtEdit->bind_param("sisi",  $_POST['cPrefix'],$_POST['cNumber'],$_POST['cDescription'], $_POST['cid']);
       $stmtEdit->execute();
-      echo '<div class="alert alert-success" role="alert">Building edited.</div>';
+      echo '<div class="alert alert-success" role="alert">Course edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from buildings where buildingid=?";
+      $sqlDelete = "delete from course where courseid=?";
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("i", $_POST['cid']);
       $stmtDelete->execute();
-      echo '<div class="alert alert-success" role="alert">Building deleted.</div>';
+      echo '<div class="alert alert-success" role="alert">Course deleted.</div>';
       break;
   }
 }
