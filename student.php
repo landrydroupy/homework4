@@ -24,11 +24,11 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Add':
-      $sqlAdd = "insert into course (prefix,number,description) value (?,?,?)";
+      $sqlAdd = "insert into student (courseid,fname,lname,grade) value (?,?,?,?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-      $stmtAdd->bind_param("sis", $_POST['cPrefix'],$_POST['cNumber'],$_POST['cDescription']);
+      $stmtAdd->bind_param("issi", $_POST['sCourseID'],$_POST['sFname'],$_POST['sLname'],$_POST['sGrade']);
       $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New Course added.</div>';
+      echo '<div class="alert alert-success" role="alert">New Student added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update student set courseid=?,fname=?,lname=?,grade=? where studentid=?";
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $stmtDelete = $conn->prepare($sqlDelete);
       $stmtDelete->bind_param("i", $_POST['sid']);
       $stmtDelete->execute();
-      echo '<div class="alert alert-success" role="alert">Course deleted.</div>';
+      echo '<div class="alert alert-success" role="alert">Student deleted.</div>';
       break;
   }
 }
